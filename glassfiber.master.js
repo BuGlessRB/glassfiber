@@ -27,7 +27,7 @@
   const O = Object;
 
   const /** !Object */ g =
-  { "yield": gfyield,
+  { "yield": sched_yield,
     "sleep": sleep,
     "spawn": spawn
   };
@@ -52,7 +52,7 @@
     return spawnpromise;
   }
 
-  function /** !Promise */ gfyield(/** number= */ priority)
+  function /** !Promise */ sched_yield(/** number= */ priority)
   { var /** !Promise */ newpromise
      = new Promise((resolve) => runqueue[priority || 0].push(resolve));
     runnext();

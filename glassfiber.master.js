@@ -42,7 +42,7 @@
     { let /** function():void */ resolvethread = runqueue[prio].shift();
       if (resolvethread)
       { // Tight interpreter scheduling
-        // return resolvethread();
+        // resolvethread();
 	// Loose interpreter scheduling
         setTimeout(resolvethread);
         break;

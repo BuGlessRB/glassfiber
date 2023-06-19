@@ -28,7 +28,8 @@
 
   const /** !Object */ g =
   { "yield": gfyield,
-    "sleep": sleep
+    "sleep": sleep,
+    "spawn": spawn
   };
 
   // Priorities 0, 1, 2, 3 available

@@ -20,6 +20,16 @@ It has zero dependencies on other modules.
 
 ## Basic usage
 
+Examples:
+```js
+function async main() {
+  var p1 = Glassfiber.spawn( threadA(12, 13) );
+  var p2 = Glassfiber.spawn( threadB(14, 15, 16) );
+  var p3 = Glassfiber.spawn( threadC(17) );
+  await Promise.all(p1, p2, p3);
+}
+````
+
 ## Reference documentation
 
 ### API
@@ -30,6 +40,8 @@ Specified parameters:
 - `ms` delay in milliseconds<br />
 
 Exposed API-list (in NodeJS and the browser):
+- `Glassfiber.spawn(promise)`<br />
+  Spawn a new co-routine.  Passes through the promise.
 - `Glassfiber.yield(priority?)`<br />
   Give other coroutines a chance to run, specifying our own priority (lower
   numbers are more important).  Returns a Promise.

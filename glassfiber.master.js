@@ -38,7 +38,7 @@
   function /** void */ runnext()
   { var /** number */ prio;
     for (prio = 0; prio < runqueue.length; prio++)
-    { let /** function():void */ resolvethread = runqueue[prio].pop();
+    { let /** function():void */ resolvethread = runqueue[prio].shift();
       if (resolvethread)
 	// Tight interpreter scheduling
         // return resolvethread();
@@ -60,6 +60,15 @@
      = new Promise((resolve) => setTimeout(() => resolve(), ms));
     runnext();
     return newpromise;
+  }
+
+  function /** * */ kickrun(/** * */ value) {
+    runnext();
+    return value;
+  }
+
+  function /** !Promise */ spawn(/** !Promise */ promise)
+  { return promise.then(kickrun);     // What do we do with rejects?
   }
 
   if (typeof define == "function" && define["amd"])

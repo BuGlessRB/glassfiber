@@ -1,0 +1,29 @@
+{
+  "name": "glassfiber",
+  "version": "1.0.0",
+  "description": "Co-routines implemented using Promises",
+  "main": "glassfiber.min.js",
+  "scripts": {
+    "test": "./prepfiles && ./runtest.sh",
+    "prepare": "./prepfiles"
+  },
+  "sideEffects": false,
+  "dependencies": {},
+  "devDependencies": {},
+  "directories": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/BuGlessRB/glassfiber"
+  },
+  "keywords": [
+    "thread",
+    "co-routine",
+    "promise",
+    "zerodeps"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "author": "Stephen R. van den Berg <srb@cuci.nl>",
+  "license": "(ISC OR GPL-3.0)"
+}

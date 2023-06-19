@@ -36,17 +36,20 @@
 
   const runqueue = [[],[],[],[]];
 
-  function /** void */ runnext()
+  function /** * */ runnext(/** * */ spawnpromise)
   { var /** number */ prio;
     for (prio = 0; prio < runqueue.length; prio++)
     { let /** function():void */ resolvethread = runqueue[prio].shift();
       if (resolvethread)
-	// Tight interpreter scheduling
+      { // Tight interpreter scheduling
         // return resolvethread();
 	// Loose interpreter scheduling
-        return /** @type{?} */(setTimeout(resolvethread));
+        setTimeout(resolvethread);
+        break;
+      }
     }
     // Idle
+    return spawnpromise;
   }
 
   function /** !Promise */ gfyield(/** number= */ priority)
@@ -63,13 +66,8 @@
     return newpromise;
   }
 
-  function /** * */ kickrun(/** * */ value) {
-    runnext();
-    return value;
-  }
-
   function /** !Promise */ spawn(/** !Promise */ promise)
-  { return promise.then(kickrun);     // What do we do with rejects?
+  { return promise.then(runnext);     // What do we do with rejects?
   }
 
   if (typeof define == "function" && define["amd"])

@@ -38,6 +38,6 @@ Exposed API-list (in NodeJS and the browser):
 
 ## References
 
-- [js-coroutines](https://github.com/BuGlessRB/er-dom).
+- [js-coroutines](https://github.com/miketalbot/js-coroutines).
 
 Card-carrying member of the `zerodeps` movement.

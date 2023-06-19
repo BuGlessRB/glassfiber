@@ -20,8 +20,17 @@ It has zero dependencies on other modules.
 
 ## Basic usage
 
-Examples:
+Example:
 ```js
+function async threadA(a, b) {
+}
+
+function async threadB(a, b, c) {
+}
+
+function async threadC(a) {
+}
+
 function async main() {
   var p1 = Glassfiber.spawn( threadA(12, 13) );
   var p2 = Glassfiber.spawn( threadB(14, 15, 16) );

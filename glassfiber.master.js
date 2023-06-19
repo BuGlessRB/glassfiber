@@ -53,17 +53,13 @@
   }
 
   function /** !Promise */ sched_yield(/** number= */ priority)
-  { var /** !Promise */ newpromise
-     = new Promise((resolve) => runqueue[priority || 0].push(resolve));
-    runnext();
-    return newpromise;
+  { return /** @type{!Promise} */(runnext(new Promise((resolve) =>
+                                        runqueue[priority || 0].push(resolve))));
   }
 
   function /** !Promise */ sleep(/** number */ ms)
-  { var /** !Promise */ newpromise
-     = new Promise((resolve) => setTimeout(() => resolve(), ms));
-    runnext();
-    return newpromise;
+  { return /** @type{!Promise} */(runnext(new Promise((resolve) =>
+                                          setTimeout(() => resolve(), ms))));
   }
 
   function /** !Promise */ spawn(/** !Promise */ promise)

@@ -37,14 +37,11 @@
   const runqueue = [[],[],[],[]];
 
   function /** * */ runnext(/** * */ spawnpromise)
-  { var /** number */ prio;
-    for (prio = 0; prio < runqueue.length; prio++)
-    { let /** function():void */ resolvethread = runqueue[prio].shift();
+  { var /** !Array */ currunqueue;
+    for (currunqueue of runqueue)
+    { let /** function():void */ resolvethread = currunqueue.shift();
       if (resolvethread)
-      { // Tight interpreter scheduling
-        // resolvethread();
-	// Loose interpreter scheduling
-        setTimeout(resolvethread);
+      { resolvethread();
         break;
       }
     }
